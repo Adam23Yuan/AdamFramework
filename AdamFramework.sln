@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adam.WebApi", "Adam.WebApi\Adam.WebApi.csproj", "{8C5B51FE-5E37-410F-ABDA-1A552C61AB01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.WebApi", "Adam.WebApi\Adam.WebApi.csproj", "{8C5B51FE-5E37-410F-ABDA-1A552C61AB01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adam.ConsoleApp", "Adam.ConsoleApp\Adam.ConsoleApp.csproj", "{C2E8868A-651F-4D5B-8AA0-F082B94186C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8C5B51FE-5E37-410F-ABDA-1A552C61AB01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C5B51FE-5E37-410F-ABDA-1A552C61AB01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C5B51FE-5E37-410F-ABDA-1A552C61AB01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2E8868A-651F-4D5B-8AA0-F082B94186C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2E8868A-651F-4D5B-8AA0-F082B94186C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2E8868A-651F-4D5B-8AA0-F082B94186C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2E8868A-651F-4D5B-8AA0-F082B94186C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
