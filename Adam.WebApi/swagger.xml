@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Adam.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:Adam.WebApi.Controllers.devV1Controller">
+            <summary>
+            V1版本API
+            </summary>
+        </member>
+        <member name="M:Adam.WebApi.Controllers.devV1Controller.Get">
+            <summary>
+            获取数据
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

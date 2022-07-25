@@ -1,19 +1,21 @@
+using Adam.WebApi.Utility;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Adam.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]/")]
-    public class WeatherForecastController : ControllerBase
+    [ApiExplorerSettings(GroupName = nameof(ApiVersionInfo.V2))]
+    public class devV2Controller : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<devV2Controller> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public devV2Controller(ILogger<devV2Controller> logger)
         {
             _logger = logger;
         }
