@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen(c =>
         {
             Title = $"您选择的是[Title={field.Name}]版本",
             Version = $"[Version={field.Name}]",
-            Description = $"Adam.WebApi[{field.Name}]版本",
+            Description = $"Description=[Adam.WebApi({field.Name})版本]",
         });
     }
     //swagger接口注释

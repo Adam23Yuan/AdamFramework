@@ -15,5 +15,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Adam.WebApi.Controllers.devV1Controller.Get2(System.Int32)">
+            <summary>
+            获取数据
+            <para> 参数 <paramref name="typeID"/> 数据类型为int </para>
+            </summary>
+            <param name="typeID">类型ID</param>
+            <returns>返回天气集合</returns>
+        </member>
     </members>
 </doc>
