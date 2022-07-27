@@ -1,4 +1,4 @@
-using Adam.WebApi.Utility;
+﻿using Adam.WebApi.Utility;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Adam.WebApi.Controllers
@@ -20,6 +20,10 @@ namespace Adam.WebApi.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// 获取数据 我来改点内容 试试 git add . 命令
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetRoute")]
         public IEnumerable<WeatherForecast> Get()
