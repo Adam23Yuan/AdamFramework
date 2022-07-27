@@ -24,7 +24,7 @@ namespace Adam.WebApi.Controllers
         }
 
         /// <summary>
-        /// 获取数据
+        /// 获取数据 我来改点内容 试试 git add . 命令
         /// </summary>
         /// <returns></returns>
         [HttpGet]
