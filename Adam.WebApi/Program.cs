@@ -12,6 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 // gitdev/remote 第二次修改内容
 // gitdev/remote 第三次修改内容
 // gitdev/remote 第四次修改内容
+// test git diff cmd
+// test git diff cmd not commmit
+// test git commit edit pattern
+// git commit edit pattern must english input 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
