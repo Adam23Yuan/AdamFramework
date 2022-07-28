@@ -15,8 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 // test git diff cmd
 // test git diff cmd not commmit
 // test git commit edit pattern
-// git commit edit pattern must english input 
-// git rebase cmd -main update
+// git commit edit pattern must english input  
+// git rebase cmd gitrebase branch commit 
+// git rebase cmd gitrebase branch commit again 
+// git rebase cmd -main update 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
