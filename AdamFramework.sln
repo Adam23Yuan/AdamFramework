@@ -5,7 +5,29 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.WebApi", "Adam.WebApi\Adam.WebApi.csproj", "{8C5B51FE-5E37-410F-ABDA-1A552C61AB01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adam.ConsoleApp", "Adam.ConsoleApp\Adam.ConsoleApp.csproj", "{C2E8868A-651F-4D5B-8AA0-F082B94186C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.ConsoleApp", "Adam.ConsoleApp\Adam.ConsoleApp.csproj", "{C2E8868A-651F-4D5B-8AA0-F082B94186C6}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Adam.WebSite", "Adam.WebSite\", "{6CA08DE1-7458-4D78-96AF-DB9B5D172F06}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52027"
+		Debug.AspNetCompiler.PhysicalPath = "Adam.WebSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52027\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52027"
+		Release.AspNetCompiler.PhysicalPath = "Adam.WebSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52027\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "52027"
+		SlnRelativePath = "Adam.WebSite\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +43,10 @@ Global
 		{C2E8868A-651F-4D5B-8AA0-F082B94186C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2E8868A-651F-4D5B-8AA0-F082B94186C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E8868A-651F-4D5B-8AA0-F082B94186C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CA08DE1-7458-4D78-96AF-DB9B5D172F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CA08DE1-7458-4D78-96AF-DB9B5D172F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CA08DE1-7458-4D78-96AF-DB9B5D172F06}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CA08DE1-7458-4D78-96AF-DB9B5D172F06}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
