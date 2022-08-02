@@ -1,6 +1,9 @@
-﻿using Adam.WebApi.Utility;
+﻿using Adam.IServices;
+using Adam.Services;
+using Adam.WebApi.Utility;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +23,8 @@ var builder = WebApplication.CreateBuilder(args);
 // git rebase cmd gitrebase branch commit again 
 // git rebase cmd -main update 
 builder.Services.AddControllers();
+// register services 
+builder.Services.AddTransient<IFileService, FileService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>

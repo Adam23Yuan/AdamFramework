@@ -11,7 +11,7 @@
         </member>
         <member name="M:Adam.WebApi.Controllers.devV1Controller.Get">
             <summary>
-            获取数据
+            获取数据 我来改点内容 试试 git add . 命令
             </summary>
             <returns></returns>
         </member>
@@ -22,6 +22,18 @@
             </summary>
             <param name="typeID">类型ID</param>
             <returns>返回天气集合</returns>
+        </member>
+        <member name="M:Adam.WebApi.Controllers.devV2Controller.Get">
+            <summary>
+            获取数据 我来改点内容 试试 git add . 命令
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Adam.WebApi.Controllers.FileController">
+            <summary>
+            V1版本API
+            <para>https://levelup.gitconnected.com/upload-and-download-multiple-files-using-net-5-0-web-api-430f95f34237</para>
+            </summary>
         </member>
     </members>
 </doc>

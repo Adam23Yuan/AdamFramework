@@ -1,0 +1,39 @@
+// TODO: cancelSelectedJobs POST request, currently passing empty array, pass jobIds when it's ready
+export const cancelSelectedJobs = async (jobIds: number[]) => {
+    try {
+        const postdata={"jobIdS":jobIds}; 
+        console.error("CancelSelected",postdata)
+        //传递键值对
+        const data = await resolve(`${API_BASE_HOST}/Job/CancelSelectedJobs`, 'POST',postdata)
+        //传递单个参数   不知道前端如何改  可以传递一个数组
+        // const data = await resolve(`${API_BASE_HOST}/Job/CancelSelected`, 'POST',postdata)
+
+        if (data) {
+            return data
+        }
+        return []
+    } catch (error) {
+        console.error(error)
+        return error
+    }
+}
+
+// TODO: cancelSelectedJobs POST request, currently passing empty array, pass jobIds when it's ready
+export const rebalanceSelectedJobs = async (jobIds: number[]) => {
+    try {
+        const postdata={"jobIdS":jobIds}; 
+        console.error("CancelSelected",postdata)
+        //传递键值对 
+        const data = await resolve(`${API_BASE_HOST}/Job/RebalanceSelectedJobs`, 'POST',postdata)
+        //传递单个参数   不知道前端如何改  可以传递一个数组
+        // const data = await resolve(`${API_BASE_HOST}/Job/RebalanceSelected`, 'POST',postdata)
+
+        if (data) {
+            return data
+        }
+        return []
+    } catch (error) {
+        console.error(error)
+        return error
+    }
+}
