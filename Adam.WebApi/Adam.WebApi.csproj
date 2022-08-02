@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="filefolder\**" />
+    <Content Remove="filefolder\**" />
+    <EmbeddedResource Remove="filefolder\**" />
+    <None Remove="filefolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 

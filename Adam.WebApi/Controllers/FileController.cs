@@ -1,7 +1,9 @@
-﻿using Adam.IServices;
+﻿using Adam.Dto;
+using Adam.IServices;
 using Adam.WebApi.Utility;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
 
 namespace Adam.WebApi.Controllers
 {
@@ -24,13 +26,58 @@ namespace Adam.WebApi.Controllers
         }
         #endregion
 
-        #region Uploads  
+        #region Upload
         [HttpPost(nameof(Upload))]
-        public IActionResult Upload([Required] List<IFormFile> formFiles, string subDirectory)
+        public IActionResult Upload(List<IFormFile> formFiles, string subDirectory)
         {
             try
             {
                 _fileService.UploadFile(formFiles, subDirectory);
+
+                return Ok(new { formFiles.Count, Size = _fileService.SizeConverter(formFiles.Sum(f => f.Length)) });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost(nameof(UploadBody))]//
+        public IActionResult UploadBody([FromForm] List<IFormFile> formFiles, [FromForm] string subDirectory)
+        {
+            try
+            {
+                _fileService.UploadFile(formFiles, subDirectory);
+
+                return Ok(new { formFiles.Count, Size = _fileService.SizeConverter(formFiles.Sum(f => f.Length)) });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost(nameof(UploadBodyJson))]//
+        public IActionResult UploadBodyJson([FromForm] List<IFormFile> formFiles, [FromForm] FileInputDto fileInputDto)
+        {
+            try
+            {
+                _fileService.UploadFile(formFiles, nameof(UploadBodyJson));
+
+                return Ok(new { formFiles.Count, Size = _fileService.SizeConverter(formFiles.Sum(f => f.Length)) });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPost(nameof(UploadBodyJsonString))]//
+        public IActionResult UploadBodyJsonString([FromForm] List<IFormFile> formFiles, [FromForm] string fileInputDtoJson)
+        {
+            try
+            {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                FileInputDto fileInputDto = JsonSerializer.Deserialize<FileInputDto>(fileInputDtoJson);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                _fileService.UploadFile(formFiles, nameof(UploadBodyJsonString));
 
                 return Ok(new { formFiles.Count, Size = _fileService.SizeConverter(formFiles.Sum(f => f.Length)) });
             }
@@ -44,6 +91,20 @@ namespace Adam.WebApi.Controllers
         #region Download File  
         [HttpGet(nameof(Download))]
         public IActionResult Download([Required] string subDirectory)
+        {
+            try
+            {
+                var fileResponseDto = _fileService.DownloadFiles(subDirectory);
+
+                return File(fileResponseDto.archiveData, fileResponseDto.fileType, fileResponseDto.archiveName);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet(nameof(DownloadBody))]
+        public IActionResult DownloadBody([Required][FromBody] string subDirectory)
         {
             try
             {
