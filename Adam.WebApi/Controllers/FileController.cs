@@ -86,6 +86,30 @@ namespace Adam.WebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        
+        [HttpPost(nameof(UploadFormCollection))]//
+        public IActionResult UploadFormCollection([FromForm] IFormCollection formCollection)
+        {
+            try
+            {
+                FormFileCollection fileCollection = (FormFileCollection)formCollection.Files;
+                string JsonContent = string.Empty;
+                if (formCollection.ContainsKey("JsonContent"))
+                {
+                    JsonContent = formCollection["JsonContent"];
+                }
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                FileInputDto fileInputDto = JsonSerializer.Deserialize<FileInputDto>(JsonContent);
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                _fileService.UploadFile(fileCollection, nameof(UploadFormCollection));
+
+                return Ok(new { fileCollection.Count, Size = _fileService.SizeConverter(fileCollection.Sum(f => f.Length)) });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         #endregion
 
         #region Download File  
