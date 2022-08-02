@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -9,7 +9,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="filefolder\**" />
+    <Compile Remove="UploadBodyJsonString\**" />
+    <Compile Remove="UploadBody\**" />
+    <Compile Remove="UploadFormCollection\**" />
+    <Compile Remove="Upload\**" />
+    <Content Remove="filefolder\**" />
+    <Content Remove="UploadBodyJsonString\**" />
+    <Content Remove="UploadBody\**" />
+    <Content Remove="UploadFormCollection\**" />
+    <Content Remove="Upload\**" />
+    <EmbeddedResource Remove="filefolder\**" />
+    <EmbeddedResource Remove="UploadBodyJsonString\**" />
+    <EmbeddedResource Remove="UploadBody\**" />
+    <EmbeddedResource Remove="UploadFormCollection\**" />
+    <EmbeddedResource Remove="Upload\**" />
+    <None Remove="filefolder\**" />
+    <None Remove="UploadBodyJsonString\**" />
+    <None Remove="UploadBody\**" />
+    <None Remove="UploadFormCollection\**" />
+    <None Remove="Upload\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Adam.Dto\Adam.Dto.csproj" />
   </ItemGroup>
 
 </Project>
