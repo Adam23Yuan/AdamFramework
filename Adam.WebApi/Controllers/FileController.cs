@@ -93,6 +93,8 @@ namespace Adam.WebApi.Controllers
         {
             try
             {
+                //获取文件上传文件的方法
+                var keyValuePairs = Request.Form.Files;
                 FormFileCollection fileCollection = (FormFileCollection)formCollection.Files;
                 foreach (var item in fileCollection)
                 {
