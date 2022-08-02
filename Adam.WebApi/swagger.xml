@@ -35,5 +35,12 @@
             <para>https://levelup.gitconnected.com/upload-and-download-multiple-files-using-net-5-0-web-api-430f95f34237</para>
             </summary>
         </member>
+        <member name="M:Adam.WebApi.Controllers.FileController.ReadLines(System.Func{System.IO.Stream})">
+            <summary>
+            Read stream line by line.
+            </summary>
+            <param name="streamFactory">streamFactory.</param>
+            <returns>Lines.</returns>
+        </member>
     </members>
 </doc>

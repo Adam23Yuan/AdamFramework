@@ -1,6 +1,7 @@
 ﻿using Adam.IServices;
 using Adam.Services;
 using Adam.WebApi.Utility;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
@@ -23,6 +24,12 @@ var builder = WebApplication.CreateBuilder(args);
 // git rebase cmd gitrebase branch commit again 
 // git rebase cmd -main update 
 builder.Services.AddControllers();
+// register form limit size
+builder.Services.Configure<FormOptions>(options => {
+    options.BufferBodyLengthLimit = 1;
+    options.MemoryBufferThreshold = 1;
+    options.ValueLengthLimit = 1;
+});
 // register services 
 builder.Services.AddTransient<IFileService, FileService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

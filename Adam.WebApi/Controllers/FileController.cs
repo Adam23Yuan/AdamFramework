@@ -3,6 +3,7 @@ using Adam.IServices;
 using Adam.WebApi.Utility;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
 
 namespace Adam.WebApi.Controllers
@@ -86,13 +87,27 @@ namespace Adam.WebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        
+
         [HttpPost(nameof(UploadFormCollection))]//
         public IActionResult UploadFormCollection([FromForm] IFormCollection formCollection)
         {
             try
             {
                 FormFileCollection fileCollection = (FormFileCollection)formCollection.Files;
+                foreach (var item in fileCollection)
+                {
+                    //第一种
+                    //StreamReader streamReader = new StreamReader(item.OpenReadStream());
+                    //第二种
+                    var lines1 = ReadLines(() =>
+                    {
+                        return item.OpenReadStream();
+                    }).ToList();
+                    //第三种
+                    Stream memoryStream = new MemoryStream();
+                    item.CopyTo(memoryStream);
+                    var lines2 = ReadLines(() => memoryStream).ToList();
+                }
                 string JsonContent = string.Empty;
                 if (formCollection.ContainsKey("JsonContent"))
                 {
@@ -142,5 +157,24 @@ namespace Adam.WebApi.Controllers
             }
         }
         #endregion
+
+
+        /// <summary>
+        /// Read stream line by line.
+        /// </summary>
+        /// <param name="streamFactory">streamFactory.</param>
+        /// <returns>Lines.</returns>
+        public static IEnumerable<string> ReadLines(Func<Stream> streamFactory)
+        {
+            using (var stream = streamFactory())
+            using (var reader = new StreamReader(stream))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    yield return line;
+                }
+            }
+        }
     }
 }
