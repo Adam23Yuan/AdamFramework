@@ -26,9 +26,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // register form limit size
 builder.Services.Configure<FormOptions>(options => {
-    options.BufferBodyLengthLimit = 1;
-    options.MemoryBufferThreshold = 1;
-    options.ValueLengthLimit = 1;
+    options.BufferBodyLengthLimit = 1024;
+    options.MemoryBufferThreshold = 1024;
+    options.ValueLengthLimit = 1024;
+});
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
 });
 // register services 
 builder.Services.AddTransient<IFileService, FileService>();
@@ -74,6 +84,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors();
 
 app.MapControllers();
 

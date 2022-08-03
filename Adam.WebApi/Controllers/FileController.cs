@@ -29,10 +29,21 @@ namespace Adam.WebApi.Controllers
 
         #region Upload
         [HttpPost(nameof(Upload))]
-        public IActionResult Upload(List<IFormFile> formFiles, string subDirectory)
+        public IActionResult Upload(List<IFormFile> formFiles, [FromForm] string subDirectory)
         {
             try
             {
+                IFormCollection keyValuePairs = Request.Form;
+                //当 参数 formFiles 与前端传递的file控件name不一致时，获取不到上传的文件
+                //可使用Request.Form.Files 获取上传的文件
+                if (formFiles.Count <= 0)
+                {
+                    IFormFileCollection fileCollection = Request.Form.Files;
+                    foreach (var item in fileCollection)
+                    {
+                        formFiles.Add(item);
+                    }
+                }
                 _fileService.UploadFile(formFiles, subDirectory);
 
                 return Ok(new { formFiles.Count, Size = _fileService.SizeConverter(formFiles.Sum(f => f.Length)) });
