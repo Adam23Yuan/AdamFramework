@@ -28,7 +28,7 @@ builder.Services.AddControllers();
 builder.Services.Configure<FormOptions>(options => {
     options.BufferBodyLengthLimit = 1;
     options.MemoryBufferThreshold = 1;
-    options.ValueLengthLimit = 1;
+    options.ValueLengthLimit = 1024;
 });
 // register services 
 builder.Services.AddTransient<IFileService, FileService>();

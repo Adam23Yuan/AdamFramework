@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form enctype="multipart/form-data" method="post" 
+          action="https://localhost:7282/api/File/Upload">
+        <div>
+            <div>
+                <h3>file upload demo</h3>
+            </div>
+            <div>
+                <input id="File1" type="file" multiple />
+            </div>
+            <div>
+                <input id="Text1" name="JsonContent" type="text" value='{"FileSize":20,"FileName":"FileInputDto","FileInfo":{"FileSize":20,"FileName":"FileDto"},"List":["FileDto","FileInputDto","Adam.ConsoleApp"]}' />
+                <input id="subDirectory" type="text" name="subDirectory" value="Upload" />
+            </div>
+            <div>
+                <input id="Button1" type="submit" value="Upload" />
+            </div>
+        </div>
+    </form>
+</body>
+</html>
