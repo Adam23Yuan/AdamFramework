@@ -35,6 +35,7 @@
             <para>https://levelup.gitconnected.com/upload-and-download-multiple-files-using-net-5-0-web-api-430f95f34237</para>
             </summary>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:Adam.WebApi.Controllers.FileController.DownLoadSingleFile(System.String,System.String)" -->
         <member name="M:Adam.WebApi.Controllers.FileController.ReadLines(System.Func{System.IO.Stream})">
             <summary>
             Read stream line by line.

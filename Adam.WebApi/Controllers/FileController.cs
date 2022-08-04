@@ -2,9 +2,11 @@
 using Adam.IServices;
 using Adam.WebApi.Utility;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
 using System.ComponentModel.DataAnnotations;
 using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace Adam.WebApi.Controllers
 {
@@ -16,14 +18,16 @@ namespace Adam.WebApi.Controllers
     [Route("api/[controller]/")]
     public class FileController : ControllerBase
     {
-        #region Property  
+        #region Property   
+        private IHostingEnvironment _hostingEnvironment;
         private readonly IFileService _fileService;
         #endregion
 
         #region Constructor  
-        public FileController(IFileService fileService)
+        public FileController(IFileService fileService, IHostingEnvironment hostingEnvironment)
         {
             _fileService = fileService;
+            _hostingEnvironment = hostingEnvironment;
         }
         #endregion
 
@@ -169,8 +173,37 @@ namespace Adam.WebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        #endregion
 
+        /// <summary>
+        /// 前段下载Excel模板
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Route(nameof(DownLoadSingleFile))]
+        public IActionResult DownLoadSingleFile([FromForm] string fileName, [FromForm] string subDirectory)
+        {
+            //头部保存 文件名
+            HttpContext.Response.Headers.Append("Content-Disposition", "attachment;filename=" + System.Web.HttpUtility.UrlEncode($"{fileName}"));
+            //文件类型
+            FileExtensionContentTypeProvider provider = new FileExtensionContentTypeProvider();
+            subDirectory = subDirectory ?? string.Empty;
+            var targetDirectory = Path.Combine(_hostingEnvironment.ContentRootPath, subDirectory);
+            string fileFullName = targetDirectory + $"/{fileName}";
+            if (!System.IO.File.Exists(fileFullName))
+            {
+                return new EmptyResult();
+            }
+            string fileExtions = Path.GetExtension(fileFullName);
+            //获取文件类型
+            string mime;
+            provider.Mappings.TryGetValue(fileExtions, out mime);
+            //读取文件流
+            FileStream fs = new FileStream(fileFullName, FileMode.Open, FileAccess.Read);
+
+            return File(fs, mime, Path.GetFileName(fileFullName), true);
+        }
+
+        #endregion
 
         /// <summary>
         /// Read stream line by line.
