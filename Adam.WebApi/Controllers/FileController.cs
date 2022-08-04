@@ -1,5 +1,6 @@
 ﻿using Adam.Dto;
 using Adam.IServices;
+using Adam.WebApi.Extensions;
 using Adam.WebApi.Utility;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
@@ -75,20 +76,22 @@ namespace Adam.WebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpPost(nameof(UploadBodyJson))]//
-        public IActionResult UploadBodyJson([FromForm] List<IFormFile> formFiles, [FromForm] FileInputDto fileInputDto)
-        {
-            try
-            {
-                _fileService.UploadFile(formFiles, nameof(UploadBodyJson));
 
-                return Ok(new { formFiles.Count, Size = _fileService.SizeConverter(formFiles.Sum(f => f.Length)) });
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //[HttpPost(nameof(UploadBodyJson))]//
+        //public IActionResult UploadBodyJson([FromForm] List<IFormFile> formFiles, [FromForm] FileInputDto fileInputDto)
+        //{
+        //    try
+        //    {
+        //        _fileService.UploadFile(formFiles, nameof(UploadBodyJson));
+
+        //        return Ok(new { formFiles.Count, Size = _fileService.SizeConverter(formFiles.Sum(f => f.Length)) });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
+
         [HttpPost(nameof(UploadBodyJsonString))]//
         public IActionResult UploadBodyJsonString([FromForm] List<IFormFile> formFiles, [FromForm] string fileInputDtoJson)
         {
@@ -97,6 +100,16 @@ namespace Adam.WebApi.Controllers
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 FileInputDto fileInputDto = JsonSerializer.Deserialize<FileInputDto>(fileInputDtoJson);
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                //当 参数 formFiles 与前端传递的file控件name不一致时，获取不到上传的文件
+                //可使用Request.Form.Files 获取上传的文件
+                if (formFiles.Count <= 0)
+                {
+                    IFormFileCollection fileCollection = Request.Form.Files;
+                    foreach (var item in fileCollection)
+                    {
+                        formFiles.Add(item);
+                    }
+                }
                 _fileService.UploadFile(formFiles, nameof(UploadBodyJsonString));
 
                 return Ok(new { formFiles.Count, Size = _fileService.SizeConverter(formFiles.Sum(f => f.Length)) });
@@ -157,6 +170,7 @@ namespace Adam.WebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         #endregion
 
         #region Download File  
@@ -198,7 +212,7 @@ namespace Adam.WebApi.Controllers
         public IActionResult DownLoadSingleFile([FromForm] string fileName, [FromForm] string subDirectory)
         {
             //头部保存 文件名
-            HttpContext.Response.Headers.Append("Content-Disposition", "attachment;filename=" + System.Web.HttpUtility.UrlEncode($"{fileName}"));
+            //HttpContext.Response.Headers.Append("Content-Disposition", "attachment;filename=" + System.Web.HttpUtility.UrlEncode($"{fileName}"));
             //文件类型
             FileExtensionContentTypeProvider provider = new FileExtensionContentTypeProvider();
             subDirectory = subDirectory ?? string.Empty;
@@ -208,14 +222,15 @@ namespace Adam.WebApi.Controllers
             {
                 return new EmptyResult();
             }
-            string fileExtions = Path.GetExtension(fileFullName);
-            //获取文件类型
-            string mime;
-            provider.Mappings.TryGetValue(fileExtions, out mime);
-            //读取文件流
-            FileStream fs = new FileStream(fileFullName, FileMode.Open, FileAccess.Read);
+            return HttpContext.ResponseFile(fileFullName);
 
-            return File(fs, mime, Path.GetFileName(fileFullName), true);
+            //string fileExtions = Path.GetExtension(fileFullName);
+            ////获取文件类型
+            //string mime;
+            //provider.Mappings.TryGetValue(fileExtions, out mime);
+            ////读取文件流
+            //FileStream fs = new FileStream(fileFullName, FileMode.Open, FileAccess.Read);
+            //return File(fs, mime, Path.GetFileName(fileFullName), true);
         }
 
         #endregion
