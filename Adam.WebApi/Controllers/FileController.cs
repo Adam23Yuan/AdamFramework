@@ -13,6 +13,10 @@ namespace Adam.WebApi.Controllers
     /// <summary>
     /// V1版本API
     /// <para>https://levelup.gitconnected.com/upload-and-download-multiple-files-using-net-5-0-web-api-430f95f34237</para>
+    /// <para>https://www.cnblogs.com/wangxiaorang/p/16378527.html</para>
+    /// <para>https://www.cnblogs.com/JohnnyLui/p/16096643.html</para>
+    /// <para>上传分：请求上传，合并，保存</para>
+    /// <para>https://www.cnblogs.com/AprilBlank/p/11399509.html</para>
     /// </summary>
     [ApiController]
     [Route("api/[controller]/")]
@@ -129,6 +133,17 @@ namespace Adam.WebApi.Controllers
                 if (formCollection.ContainsKey("JsonContent"))
                 {
                     JsonContent = formCollection["JsonContent"];
+                }
+                try
+                {
+                    if (formCollection.ContainsKey("JsonContentObj"))
+                    {
+                        string inputDto = formCollection["JsonContentObj"].ToString();
+                    }
+
+                }
+                catch (Exception)
+                {
                 }
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 FileInputDto fileInputDto = JsonSerializer.Deserialize<FileInputDto>(JsonContent);

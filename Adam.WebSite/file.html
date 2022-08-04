@@ -27,6 +27,14 @@
             function uploadFile() {
                 const formElement = document.getElementById("frm");
                 const fd = new FormData(formElement);
+                const inputDto = {
+                    FileSize: 23,
+                    FileName: 'avatar.xlms',
+                    List: ['a', 'b', 'c']
+                };
+                // js向FormData 添加自定义键值对
+                fd.append("JsonContentObjJson", JSON.stringify(inputDto))
+                console.warn('form', { formElement: formElement, fd: fd })
                 const oOutput = document.getElementById("result");
                 const oReq = new XMLHttpRequest();
                 oReq.open("POST", "https://localhost:7282/api/File/UploadFormCollection", true);

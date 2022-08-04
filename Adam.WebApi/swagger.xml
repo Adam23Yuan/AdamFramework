@@ -33,9 +33,18 @@
             <summary>
             V1版本API
             <para>https://levelup.gitconnected.com/upload-and-download-multiple-files-using-net-5-0-web-api-430f95f34237</para>
+            <para>https://www.cnblogs.com/wangxiaorang/p/16378527.html</para>
+            <para>https://www.cnblogs.com/JohnnyLui/p/16096643.html</para>
+            <para>上传分：请求上传，合并，保存</para>
+            <para>https://www.cnblogs.com/AprilBlank/p/11399509.html</para>
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Adam.WebApi.Controllers.FileController.DownLoadSingleFile(System.String,System.String)" -->
+        <member name="M:Adam.WebApi.Controllers.FileController.DownLoadSingleFile(System.String,System.String)">
+            <summary>
+            前段下载Excel模板
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Adam.WebApi.Controllers.FileController.ReadLines(System.Func{System.IO.Stream})">
             <summary>
             Read stream line by line.
