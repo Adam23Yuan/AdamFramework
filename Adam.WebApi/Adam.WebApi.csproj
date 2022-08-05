@@ -39,4 +39,12 @@
     <ProjectReference Include="..\Adam.Dto\Adam.Dto.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="D:\Work\vsWorkspace\AdamFramework\Adam.WebApi\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="D:\Work\vsWorkspace\AdamFramework\Adam.WebApi\.editorconfig" />
+  </ItemGroup>
+
 </Project>

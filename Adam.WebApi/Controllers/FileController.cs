@@ -147,21 +147,15 @@ namespace Adam.WebApi.Controllers
                 {
                     JsonContent = formCollection["JsonContent"];
                 }
-                try
+                string subDirectory = nameof(UploadFormCollection);
+                if (formCollection.ContainsKey("subDirectory"))
                 {
-                    if (formCollection.ContainsKey("JsonContentObj"))
-                    {
-                        string inputDto = formCollection["JsonContentObj"].ToString();
-                    }
-
-                }
-                catch (Exception)
-                {
+                    subDirectory = formCollection["subDirectory"].ToString();
                 }
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 FileInputDto fileInputDto = JsonSerializer.Deserialize<FileInputDto>(JsonContent);
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-                _fileService.UploadFile(fileCollection, nameof(UploadFormCollection));
+                _fileService.UploadFile(fileCollection, subDirectory);
 
                 return Ok(new { fileCollection.Count, Size = _fileService.SizeConverter(fileCollection.Sum(f => f.Length)) });
             }

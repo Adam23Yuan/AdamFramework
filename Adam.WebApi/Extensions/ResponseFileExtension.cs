@@ -18,10 +18,15 @@ namespace Adam.WebApi.Extensions
             }
             string fileExtions = Path.GetExtension(fileFullName);
             //获取文件类型
-            string contentType;
-            provider.Mappings.TryGetValue(fileExtions, out contentType);
-            //读取文件流
+            string contentType = "application/octet-stream";
+            string mime = string.Empty;
+            bool flag = provider.Mappings.TryGetValue(fileExtions, out mime);
+            if (flag)
+            {
+                contentType = mime;
+            }
             FileStream fs = new FileStream(fileFullName, FileMode.Open, FileAccess.Read);
+            //读取文件流
             return new FileStreamResult(fs, contentType);
         }
     }
