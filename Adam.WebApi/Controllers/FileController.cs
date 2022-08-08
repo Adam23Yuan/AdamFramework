@@ -154,7 +154,6 @@ namespace Adam.WebApi.Controllers
                 FileInputDto fileInputDto = JsonSerializer.Deserialize<FileInputDto>(JsonContent);
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
                 _fileService.UploadFile(fileCollection, subDirectory);
-
                 return Ok(new { fileCollection.Count, Size = _fileService.SizeConverter(fileCollection.Sum(f => f.Length)) });
             }
             catch (Exception ex)
@@ -215,6 +214,35 @@ namespace Adam.WebApi.Controllers
                 return new EmptyResult();
             }
             return HttpContext.ResponseFile(fileFullName);
+
+            //string fileExtions = Path.GetExtension(fileFullName);
+            ////获取文件类型
+            //string mime;
+            //provider.Mappings.TryGetValue(fileExtions, out mime);
+            ////读取文件流
+            //FileStream fs = new FileStream(fileFullName, FileMode.Open, FileAccess.Read);
+            //return File(fs, mime, Path.GetFileName(fileFullName), true);
+        }
+        /// <summary>
+        /// 前段下载Excel模板
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Route(nameof(DownLoadSingleFileStream))]
+        public IActionResult DownLoadSingleFileStream([FromForm] string fileName, [FromForm] string subDirectory)
+        {
+            //头部保存 文件名
+            //HttpContext.Response.Headers.Append("Content-Disposition", "attachment;filename=" + System.Web.HttpUtility.UrlEncode($"{fileName}"));
+            //文件类型
+            FileExtensionContentTypeProvider provider = new FileExtensionContentTypeProvider();
+            subDirectory = subDirectory ?? string.Empty;
+            var targetDirectory = Path.Combine(_hostingEnvironment.ContentRootPath, subDirectory);
+            string fileFullName = targetDirectory + $"/{fileName}";
+            if (!System.IO.File.Exists(fileFullName))
+            {
+                return new EmptyResult();
+            }
+            return HttpContext.ResponseFileStream(fileFullName);
 
             //string fileExtions = Path.GetExtension(fileFullName);
             ////获取文件类型

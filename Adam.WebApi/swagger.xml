@@ -45,6 +45,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Adam.WebApi.Controllers.FileController.DownLoadSingleFileStream(System.String,System.String)">
+            <summary>
+            前段下载Excel模板
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Adam.WebApi.Controllers.FileController.ReadLines(System.Func{System.IO.Stream})">
             <summary>
             Read stream line by line.

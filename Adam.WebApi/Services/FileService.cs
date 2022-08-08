@@ -1,6 +1,6 @@
-﻿using Adam.Dto;
+﻿using System.IO.Compression;
+using Adam.Dto;
 using Adam.IServices;
-using System.IO.Compression;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace Adam.Services
