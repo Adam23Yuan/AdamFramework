@@ -1,12 +1,10 @@
-﻿using Adam.Dto;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json;
+using Adam.Dto;
 using Adam.IServices;
 using Adam.WebApi.Extensions;
-using Adam.WebApi.Utility;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
-using System.ComponentModel.DataAnnotations;
-using System.Reflection.Metadata.Ecma335;
-using System.Text.Json;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace Adam.WebApi.Controllers
@@ -88,7 +86,7 @@ namespace Adam.WebApi.Controllers
         //    }
         //    catch (Exception ex)
         //    {
-        //        return BadRequest(ex.Message);
+        //        return BadRequest(ex.Message);  
         //    }
         //}
 
