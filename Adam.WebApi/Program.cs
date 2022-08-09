@@ -1,10 +1,9 @@
-﻿using Adam.IServices;
+﻿using System.Reflection;
+using Adam.IServices;
 using Adam.Services;
 using Adam.WebApi.Utility;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.OpenApi.Models;
-using System.Reflection;
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,10 +24,11 @@ var builder = WebApplication.CreateBuilder(args);
 // git rebase cmd -main update 
 builder.Services.AddControllers();
 // register form limit size
-builder.Services.Configure<FormOptions>(options => {
-    options.BufferBodyLengthLimit = 1024;
-    options.MemoryBufferThreshold = 1024;
-    options.ValueLengthLimit = 1024;
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.BufferBodyLengthLimit = int.MaxValue;
+    options.MemoryBufferThreshold = int.MaxValue;
+    options.ValueLengthLimit = int.MaxValue;
 });
 builder.Services.AddCors(options =>
 {

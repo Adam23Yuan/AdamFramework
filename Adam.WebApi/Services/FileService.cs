@@ -48,6 +48,7 @@ namespace Adam.Services
 
             using (var memoryStream = new MemoryStream())
             {
+
                 using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
                 {
                     files.ForEach(file =>

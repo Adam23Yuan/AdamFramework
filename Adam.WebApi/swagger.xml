@@ -45,7 +45,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Adam.WebApi.Controllers.FileController.DownLoadSingleFileStream(System.String,System.String)">
+        <member name="M:Adam.WebApi.Controllers.FileController.DownLoadSingleFileStream(System.String,System.String,System.Int32)">
             <summary>
             前段下载Excel模板
             </summary>
@@ -57,6 +57,15 @@
             </summary>
             <param name="streamFactory">streamFactory.</param>
             <returns>Lines.</returns>
+        </member>
+        <member name="M:Adam.WebApi.Extensions.ResponseFileExtension.ResponseFileStream(Microsoft.AspNetCore.Http.HttpContext,System.String,System.Int32)">
+            <summary>
+            <para> seealso  https://www.cnblogs.com/yangxu-pro/p/8722498.html</para>
+            </summary>
+            <param name="httpContext"></param>
+            <param name="fileFullName"></param>
+            <param name="times"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

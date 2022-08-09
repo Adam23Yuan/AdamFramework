@@ -229,7 +229,7 @@ namespace Adam.WebApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route(nameof(DownLoadSingleFileStream))]
-        public IActionResult DownLoadSingleFileStream([FromForm] string fileName, [FromForm] string subDirectory)
+        public IActionResult DownLoadSingleFileStream([FromForm] string fileName, [FromForm] string subDirectory, [FromForm] int times)
         {
             //头部保存 文件名
             //HttpContext.Response.Headers.Append("Content-Disposition", "attachment;filename=" + System.Web.HttpUtility.UrlEncode($"{fileName}"));
@@ -242,7 +242,7 @@ namespace Adam.WebApi.Controllers
             {
                 return new EmptyResult();
             }
-            return HttpContext.ResponseFileStream(fileFullName);
+            return HttpContext.ResponseFileStream(fileFullName, times);
 
             //string fileExtions = Path.GetExtension(fileFullName);
             ////获取文件类型
