@@ -29,15 +29,20 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Adam.WebSite", "Adam.WebSit
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adam.Core", "Adam.Core\Adam.Core.csproj", "{ACE77353-7A04-4724-992F-872044A91197}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.Core", "Adam.Core\Adam.Core.csproj", "{ACE77353-7A04-4724-992F-872044A91197}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adam.Data", "Adam.Data\Adam.Data.csproj", "{635A015A-53C6-4F7B-9E0B-9518B756A78C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.Data", "Adam.Data\Adam.Data.csproj", "{635A015A-53C6-4F7B-9E0B-9518B756A78C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adam.Services", "Adam.Services\Adam.Services.csproj", "{6568BE04-F737-4290-9213-8B3AE1346428}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.Services", "Adam.Services\Adam.Services.csproj", "{6568BE04-F737-4290-9213-8B3AE1346428}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adam.IServices", "Adam.IServices\Adam.IServices.csproj", "{DB7EE781-2BB7-41E9-807D-FA96B06D78E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.IServices", "Adam.IServices\Adam.IServices.csproj", "{DB7EE781-2BB7-41E9-807D-FA96B06D78E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adam.Dto", "Adam.Dto\Adam.Dto.csproj", "{B4814D6C-E348-477B-8E92-523E8ECBAAB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.Dto", "Adam.Dto\Adam.Dto.csproj", "{B4814D6C-E348-477B-8E92-523E8ECBAAB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{66A9E45A-7CCE-4C87-A154-19925C67906A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
