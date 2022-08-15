@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Adam.IServices;
 using Adam.Services;
+using Adam.WebApi.Options;
 using Adam.WebApi.Utility;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.OpenApi.Models;
@@ -23,6 +24,8 @@ var builder = WebApplication.CreateBuilder(args);
 // git rebase cmd gitrebase branch commit again 
 // git rebase cmd -main update 
 builder.Services.AddControllers();
+// appsetting.json
+builder.Services.Configure<PositionOptions>(builder.Configuration.GetSection(PositionOptions.Position));
 // register form limit size
 builder.Services.Configure<FormOptions>(options =>
 {
