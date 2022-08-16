@@ -26,6 +26,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // appsetting.json
 builder.Services.Configure<PositionOptions>(builder.Configuration.GetSection(PositionOptions.Position));
+builder.Services.Configure<PositionOptions>(builder.Configuration.GetSection(PositionOptions.Position));
+builder.Services.Configure<PositionOptions>(builder.Configuration.GetSection(PositionOptions.Position));
 // register form limit size
 builder.Services.Configure<FormOptions>(options =>
 {
