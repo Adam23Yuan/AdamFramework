@@ -19,20 +19,30 @@ builder.Configuration.AddEnvironmentVariables("Common");
 
 // Add services to the container. 
 builder.Services.AddControllers();
+
 // appsetting.json
 builder.Services.Configure<PositionOptions>(builder.Configuration.GetSection(PositionOptions.Position));
 builder.Services.Configure<TopItemSettings>(TopItemSettings.Month,
     builder.Configuration.GetSection("TopItem:Month"));
 builder.Services.Configure<TopItemSettings>(TopItemSettings.Year,
     builder.Configuration.GetSection("TopItem:Year"));
+// 不周的类库实现
+////builder.Services.Configure<MyConfigOptions>("Var1", options =>
+////{
+////    options.Key2 = 1;
+////});
+///
 // 验证只使用一种方案即可，两种方案会重复执行。
-
 // 验证一：注册+验证分开注册
 builder.Services.Configure<MyConfigOptions>(builder.Configuration.GetSection(MyConfigOptions.MyConfig));
 builder.Services.AddSingleton<IValidateOptions<MyConfigOptions>, MyConfigValidation>();
 builder.Services.PostConfigure<PositionOptions>(myOptions =>
 {
     myOptions.Name += "PostConfigureAll";
+});
+builder.Services.PostConfigure<PositionOptions>(myOptions =>
+{
+    myOptions.Name += "——again";
 });
 //// 验证二：IOptions 验证  注册+验证
 //builder.Services.AddOptions<MyConfigOptions>()
@@ -49,8 +59,11 @@ builder.Services.PostConfigure<PositionOptions>(myOptions =>
 //                return true;
 //            }, "error message");
 
-
-//builder.Services.AddOptions<TopItemSettings>().Configure<>
+// 从DI中继续获取已配置的options 继续 配置options
+builder.Services.AddOptions<PositionOptions>().Configure<IOptionsFactory<TopItemSettings>, IOptionsFactory<FormOptions>>((options, factoryPositionOptions, factoryFormOptions) =>
+{
+    options.Name += $"【AddOptions<TopItemSettings>().Configure<IOptionsFactory<PositionOptions>, IOptionsFactory<FormOptions>>】";
+});
 // register form limit size
 builder.Services.Configure<FormOptions>(options =>
 {
