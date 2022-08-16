@@ -24,6 +24,7 @@ namespace Adam.WebApi.Controllers
         private readonly IOptionsMonitor<TopItemSettings> _nameOptionsDelegate;
 
         IOptions<MyConfigOptions> _config;
+
         private readonly ILogger<WeatherForecastController> _logger;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger,
@@ -67,12 +68,18 @@ namespace Adam.WebApi.Controllers
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)] + $"-IOptions<PositionOptions>=>{_positionOptions.Name}|-IOptionsSnapshot<PositionOptions>=>{_snapshotOptionsSnapshot.Name}|-IOptionsMonitor<PositionOptions>=>{_optionsDelegate.CurrentValue.Name}",
-                OptionText = $"Month:Name {_monthTopItem.Name} Month:Model {_monthTopItem.Model} Year:Name {_yearTopItem.Name}  Year:Model {_yearTopItem.Model}|||" +
+                Summary = $"-IOptions<PositionOptions>=>{_positionOptions.Name}|-IOptionsSnapshot<PositionOptions>=>{_snapshotOptionsSnapshot.Name}|-IOptionsMonitor<PositionOptions>=>{_optionsDelegate.CurrentValue.Name}",
+                OptionText = $"Month {_monthTopItem.Name} : {_monthTopItem.Model} | Year {_yearTopItem.Name} : {_yearTopItem.Model}|||" +
                 $"Month:{_nameOptionsDelegate.Get(TopItemSettings.Month).Name}|||" +
                 $"OptionsValidation: {_config.Value.Key1}:{_config.Value.Key2}:{_config.Value.Key3}"
             })
             .ToArray();
+        }
+        [HttpPost]
+        [Route("PostConfigureAll")]
+        public bool PostConfigureAll()
+        {
+            return true;
         }
     }
 }

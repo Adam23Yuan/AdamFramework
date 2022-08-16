@@ -34,24 +34,27 @@ builder.Services.Configure<TopItemSettings>(TopItemSettings.Year,
 // 验证只使用一种方案即可，两种方案会重复执行。
 
 // 验证一：注册+验证分开注册
-builder.Services.Configure<MyConfigOptions>(builder.Configuration.GetSection(
-                                        MyConfigOptions.MyConfig));
-// 验证二：IOptions 验证  注册+验证
-builder.Services.AddOptions<MyConfigOptions>()
-            .Bind(builder.Configuration.GetSection(MyConfigOptions.MyConfig))
-            // 注解特性验证
-            .ValidateDataAnnotations()
-            // 扩展验证
-            .Validate(config =>
-            {
-                if (config.Key2 != 0)
-                {
-                    return config.Key3 > config.Key2;
-                }
-                return true;
-            }, "error message");
-
+builder.Services.Configure<MyConfigOptions>(builder.Configuration.GetSection(MyConfigOptions.MyConfig));
 builder.Services.AddSingleton<IValidateOptions<MyConfigOptions>, MyConfigValidation>();
+builder.Services.PostConfigure<PositionOptions>(myOptions =>
+{
+    myOptions.Name += "PostConfigureAll";
+});
+//// 验证二：IOptions 验证  注册+验证
+//builder.Services.AddOptions<MyConfigOptions>()
+//            .Bind(builder.Configuration.GetSection(MyConfigOptions.MyConfig))
+//            // 注解特性验证
+//            .ValidateDataAnnotations()
+//            // 扩展验证
+//            .Validate(config =>
+//            {
+//                if (config.Key2 != 0)
+//                {
+//                    return config.Key3 > config.Key2;
+//                }
+//                return true;
+//            }, "error message");
+
 
 //builder.Services.AddOptions<TopItemSettings>().Configure<>
 // register form limit size
@@ -117,3 +120,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.UseCors();
+
+app.MapControllers();
+
+app.Run();
