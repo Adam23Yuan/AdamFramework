@@ -26,8 +26,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // appsetting.json
 builder.Services.Configure<PositionOptions>(builder.Configuration.GetSection(PositionOptions.Position));
-builder.Services.Configure<PositionOptions>(builder.Configuration.GetSection(PositionOptions.Position));
-builder.Services.Configure<PositionOptions>(builder.Configuration.GetSection(PositionOptions.Position));
+builder.Services.Configure<TopItemSettings>(TopItemSettings.Month,
+    builder.Configuration.GetSection("TopItem:Month"));
+builder.Services.Configure<TopItemSettings>(TopItemSettings.Year,
+    builder.Configuration.GetSection("TopItem:Year"));
 // register form limit size
 builder.Services.Configure<FormOptions>(options =>
 {
