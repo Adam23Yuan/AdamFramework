@@ -1,6 +1,6 @@
-﻿using Adam.Dto;
+﻿using System.IO.Compression;
+using Adam.Dto;
 using Adam.IServices;
-using System.IO.Compression;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace Adam.Services
@@ -48,6 +48,7 @@ namespace Adam.Services
 
             using (var memoryStream = new MemoryStream())
             {
+
                 using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
                 {
                     files.ForEach(file =>

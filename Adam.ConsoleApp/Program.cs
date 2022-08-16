@@ -74,6 +74,9 @@ public class recordTest
         //goods2.name = "css class";
 
         CustomerRecord customerRecord = new CustomerRecord("adam");
+        //构造函数属性不可修改
+        //customerRecord.name = "adam.construct";
+        //自定义属性 可修改
         customerRecord.Name = "adam.rename";
         customerRecord.Age = "adam.age";
 
