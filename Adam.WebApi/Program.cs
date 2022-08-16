@@ -30,6 +30,22 @@ builder.Services.Configure<TopItemSettings>(TopItemSettings.Month,
     builder.Configuration.GetSection("TopItem:Month"));
 builder.Services.Configure<TopItemSettings>(TopItemSettings.Year,
     builder.Configuration.GetSection("TopItem:Year"));
+
+// IOptions 验证
+builder.Services.AddOptions<MyConfigOptions>()
+            .Bind(builder.Configuration.GetSection(MyConfigOptions.MyConfig))
+            // 注解特性验证
+            .ValidateDataAnnotations()
+            // 扩展验证
+            .Validate(config =>
+            {
+                if (config.Key2 != 0)
+                {
+                    return config.Key3 > config.Key2;
+                }
+                return true;
+            }, "error message");
+//builder.Services.AddOptions<TopItemSettings>().Configure<>
 // register form limit size
 builder.Services.Configure<FormOptions>(options =>
 {
