@@ -4,6 +4,7 @@ using Adam.Services;
 using Adam.WebApi.Options;
 using Adam.WebApi.Utility;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,8 +31,12 @@ builder.Services.Configure<TopItemSettings>(TopItemSettings.Month,
     builder.Configuration.GetSection("TopItem:Month"));
 builder.Services.Configure<TopItemSettings>(TopItemSettings.Year,
     builder.Configuration.GetSection("TopItem:Year"));
+// 验证只使用一种方案即可，两种方案会重复执行。
 
-// IOptions 验证
+// 验证一：注册+验证分开注册
+builder.Services.Configure<MyConfigOptions>(builder.Configuration.GetSection(
+                                        MyConfigOptions.MyConfig));
+// 验证二：IOptions 验证  注册+验证
 builder.Services.AddOptions<MyConfigOptions>()
             .Bind(builder.Configuration.GetSection(MyConfigOptions.MyConfig))
             // 注解特性验证
@@ -45,6 +50,9 @@ builder.Services.AddOptions<MyConfigOptions>()
                 }
                 return true;
             }, "error message");
+
+builder.Services.AddSingleton<IValidateOptions<MyConfigOptions>, MyConfigValidation>();
+
 //builder.Services.AddOptions<TopItemSettings>().Configure<>
 // register form limit size
 builder.Services.Configure<FormOptions>(options =>
@@ -109,7 +117,3 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.UseCors();
-
-app.MapControllers();
-
-app.Run();
