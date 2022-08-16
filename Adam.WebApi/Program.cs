@@ -8,22 +8,16 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+// 自定义扩展 配置源
+builder.Configuration.AddJsonFile($"config/json.json");
+builder.Configuration.AddIniFile($"config/ini.ini");
+builder.Configuration.AddXmlFile($"config/xml.xml");
+// 命令行参数
+//builder.Configuration.AddCommandLine();
+// 环境变量
+builder.Configuration.AddEnvironmentVariables("Common");
 
-// Add services to the container.
-// 改点内容吧
-// master branch 添加内容
-// 改点内容吧-devmaster branch
-// gitdev/remote 修改内容
-// gitdev/remote 第二次修改内容
-// gitdev/remote 第三次修改内容
-// gitdev/remote 第四次修改内容
-// test git diff cmd
-// test git diff cmd not commmit
-// test git commit edit pattern
-// git commit edit pattern must english input  
-// git rebase cmd gitrebase branch commit 
-// git rebase cmd gitrebase branch commit again 
-// git rebase cmd -main update 
+// Add services to the container. 
 builder.Services.AddControllers();
 // appsetting.json
 builder.Services.Configure<PositionOptions>(builder.Configuration.GetSection(PositionOptions.Position));
@@ -101,7 +95,12 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
-
+// 输出配置项
+var collections = builder.Configuration.AsEnumerable();
+foreach (var item in collections)
+{
+    Console.WriteLine("{0}={1}", item.Key, item.Value);
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
