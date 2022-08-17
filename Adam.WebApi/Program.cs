@@ -26,7 +26,7 @@ builder.Services.Configure<TopItemSettings>(TopItemSettings.Month,
     builder.Configuration.GetSection("TopItem:Month"));
 builder.Services.Configure<TopItemSettings>(TopItemSettings.Year,
     builder.Configuration.GetSection("TopItem:Year"));
-// 不周的类库实现
+// 不同的类库实现
 ////builder.Services.Configure<MyConfigOptions>("Var1", options =>
 ////{
 ////    options.Key2 = 1;

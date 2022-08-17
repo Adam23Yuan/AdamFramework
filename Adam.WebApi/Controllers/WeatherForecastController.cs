@@ -79,6 +79,8 @@ namespace Adam.WebApi.Controllers
         [Route("PostConfigureAll")]
         public bool PostConfigureAll()
         {
+            var cache = HttpContext.RequestServices.GetService<IOptionsMonitorCache<PositionOptions>>();
+            Console.WriteLine("Refresh");
             return true;
         }
     }
