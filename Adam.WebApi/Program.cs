@@ -20,6 +20,7 @@ builder.Configuration.AddEnvironmentVariables("Common");
 // Add services to the container. 
 builder.Services.AddControllers();
 
+builder.Services.AddDataProtection();
 // appsetting.json
 builder.Services.Configure<PositionOptions>(builder.Configuration.GetSection(PositionOptions.Position));
 builder.Services.Configure<TopItemSettings>(TopItemSettings.Month,
