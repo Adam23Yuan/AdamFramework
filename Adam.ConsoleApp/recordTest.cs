@@ -23,7 +23,8 @@ namespace Adam.ConsoleApp
         public string Name { get; set; }
         public string Age { get; set; }
 
-        public void showMesage() {
+        public void showMesage()
+        {
             StringBuilder stringBuilder = new StringBuilder();
             Console.WriteLine(this.PrintMembers(stringBuilder));
             Console.WriteLine(stringBuilder.ToString());

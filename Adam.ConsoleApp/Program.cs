@@ -1,9 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using Adam.ConsoleApp;
-using Adam.Dto;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Adam.ConsoleApp;
+using Adam.Dto;
 
 Console.WriteLine("Hello, World!");
 

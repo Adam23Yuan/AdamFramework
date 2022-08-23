@@ -8,37 +8,42 @@ using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+// 自定义扩展 配置源
+builder.Configuration.AddJsonFile($"config/json.json");
+builder.Configuration.AddIniFile($"config/ini.ini");
+builder.Configuration.AddXmlFile($"config/xml.xml");
+// 命令行参数
+//builder.Configuration.AddCommandLine();
+// 环境变量
+builder.Configuration.AddEnvironmentVariables("Common");
 
-// Add services to the container.
-// 改点内容吧
-// master branch 添加内容
-// 改点内容吧-devmaster branch
-// gitdev/remote 修改内容
-// gitdev/remote 第二次修改内容
-// gitdev/remote 第三次修改内容
-// gitdev/remote 第四次修改内容
-// test git diff cmd
-// test git diff cmd not commmit
-// test git commit edit pattern
-// git commit edit pattern must english input  
-// git rebase cmd gitrebase branch commit 
-// git rebase cmd gitrebase branch commit again 
-// git rebase cmd -main update 
+// Add services to the container. 
 builder.Services.AddControllers();
+
+builder.Services.AddDataProtection();
 // appsetting.json
 builder.Services.Configure<PositionOptions>(builder.Configuration.GetSection(PositionOptions.Position));
 builder.Services.Configure<TopItemSettings>(TopItemSettings.Month,
     builder.Configuration.GetSection("TopItem:Month"));
 builder.Services.Configure<TopItemSettings>(TopItemSettings.Year,
     builder.Configuration.GetSection("TopItem:Year"));
+// 不同的类库实现
+////builder.Services.Configure<MyConfigOptions>("Var1", options =>
+////{
+////    options.Key2 = 1;
+////});
+///
 // 验证只使用一种方案即可，两种方案会重复执行。
-
 // 验证一：注册+验证分开注册
 builder.Services.Configure<MyConfigOptions>(builder.Configuration.GetSection(MyConfigOptions.MyConfig));
 builder.Services.AddSingleton<IValidateOptions<MyConfigOptions>, MyConfigValidation>();
 builder.Services.PostConfigure<PositionOptions>(myOptions =>
 {
     myOptions.Name += "PostConfigureAll";
+});
+builder.Services.PostConfigure<PositionOptions>(myOptions =>
+{
+    myOptions.Name += "——again";
 });
 //// 验证二：IOptions 验证  注册+验证
 //builder.Services.AddOptions<MyConfigOptions>()
@@ -55,8 +60,11 @@ builder.Services.PostConfigure<PositionOptions>(myOptions =>
 //                return true;
 //            }, "error message");
 
-
-//builder.Services.AddOptions<TopItemSettings>().Configure<>
+// 从DI中继续获取已配置的options 继续 配置options
+builder.Services.AddOptions<PositionOptions>().Configure<IOptionsFactory<TopItemSettings>, IOptionsFactory<FormOptions>>((options, factoryPositionOptions, factoryFormOptions) =>
+{
+    options.Name += $"【AddOptions<TopItemSettings>().Configure<IOptionsFactory<PositionOptions>, IOptionsFactory<FormOptions>>】";
+});
 // register form limit size
 builder.Services.Configure<FormOptions>(options =>
 {
@@ -101,7 +109,12 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
-
+// 输出配置项
+var collections = builder.Configuration.AsEnumerable();
+foreach (var item in collections)
+{
+    Console.WriteLine("{0}={1}", item.Key, item.Value);
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
