@@ -4,5 +4,7 @@ Console.WriteLine("Hello, World!");
 Console.WriteLine($"build git diff patch commit file");
 // git diff patch commit
 Console.WriteLine($"build git diff patch commit file second");
+// git diff patch commit
+Console.WriteLine($"build git diff patch commit file");
 // git diff path uncommit
 string inputContent = Console.ReadLine();
