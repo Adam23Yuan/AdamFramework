@@ -1,0 +1,48 @@
+From 00bbca092b43e321c5546fe3bf2390a3ed2881c4 Mon Sep 17 00:00:00 2001
+From: v-siyongyuan <v-siyongyuan@microsoft.com>
+Date: Tue, 23 Aug 2022 14:49:12 +0800
+Subject: [PATCH] git apply *.diff file
+
+---
+ EFCoreApp/Program.cs |  6 ++++++
+ patch.diff           | 14 ++++++++++++++
+ 2 files changed, 20 insertions(+)
+ create mode 100644 patch.diff
+
+diff --git a/EFCoreApp/Program.cs b/EFCoreApp/Program.cs
+index 52e7727..a741666 100644
+--- a/EFCoreApp/Program.cs
++++ b/EFCoreApp/Program.cs
+@@ -8,3 +8,9 @@ Console.WriteLine($"build git diff patch commit file second");
+ Console.WriteLine($"build git diff patch commit file third");
+ // git diff path uncommit
+ string inputContent = Console.ReadLine();
++
++// 
++Console.WriteLine($"git patch first commit");
++Console.WriteLine($"git patch second commit");
++Console.WriteLine($"git patch third commit");
++Console.WriteLine($"git patch forth commit");
+diff --git a/patch.diff b/patch.diff
+new file mode 100644
+index 0000000..085599a
+--- /dev/null
++++ b/patch.diff
+@@ -0,0 +1,14 @@
++diff --git a/EFCoreApp/Program.cs b/EFCoreApp/Program.cs
++index 52e7727..a741666 100644
++--- a/EFCoreApp/Program.cs
+++++ b/EFCoreApp/Program.cs
++@@ -8,3 +8,9 @@ Console.WriteLine($"build git diff patch commit file second");
++ Console.WriteLine($"build git diff patch commit file third");
++ // git diff path uncommit
++ string inputContent = Console.ReadLine();
+++
+++// 
+++Console.WriteLine($"git patch first commit");
+++Console.WriteLine($"git patch second commit");
+++Console.WriteLine($"git patch third commit");
+++Console.WriteLine($"git patch forth commit");
+-- 
+2.36.1.windows.1
+
