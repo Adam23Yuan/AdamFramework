@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Adam.IServices;
 using Adam.Services;
+using Adam.WebApi.Extensions;
 using Adam.WebApi.Options;
 using Adam.WebApi.Utility;
 using Microsoft.AspNetCore.Http.Features;
@@ -18,7 +19,7 @@ builder.Configuration.AddXmlFile($"config/xml.xml");
 builder.Configuration.AddEnvironmentVariables("Common");
 
 // Add services to the container. 
-builder.Services.AddControllers();
+builder.Services.AddControllers(o => o.Filters.Add<ResultDemoFilterAttribute>());
 
 builder.Services.AddDataProtection();
 // appsetting.json

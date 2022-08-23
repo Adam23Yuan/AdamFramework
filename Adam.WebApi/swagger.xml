@@ -67,5 +67,137 @@
             <param name="times"></param>
             <returns></returns>
         </member>
+        <member name="T:Adam.WebApi.Extensions.ResultDemoFilterAttribute">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Adam.WebApi.Extensions.ResultDemoFilterAttribute.OnResultExecuted(Microsoft.AspNetCore.Mvc.Filters.ResultExecutedContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Adam.WebApi.Extensions.ResultDemoFilterAttribute.OnResultExecuting(Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Adam.WebApi.Extensions.ResultDemoFilterAttribute.OnResultExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ResultExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ResultExecutionDelegate)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <param name="next"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Adam.WebApi.Response.ResponseModel`1">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Adam.WebApi.Response.ResponseModel`1.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Adam.WebApi.Response.ResponseModel`1.Code">
+            <summary>
+            code 
+            <para>200:success</para>
+            <para>500:error</para>
+            </summary>
+        </member>
+        <member name="P:Adam.WebApi.Response.ResponseModel`1.Message">
+            <summary>
+            message
+            </summary>
+        </member>
+        <member name="P:Adam.WebApi.Response.ResponseModel`1.Data">
+            <summary>
+            data
+            </summary>
+        </member>
+        <member name="M:Adam.WebApi.Response.ResponseModel`1.Success``1(``0,System.String)">
+            <summary>
+            return success
+            </summary>
+            <param name="msg">msg</param>
+            <param name="data">data</param>
+            <returns></returns>
+        </member>
+        <member name="M:Adam.WebApi.Response.ResponseModel`1.Fail``1(System.String,``0)">
+            <summary>
+            return fail
+            </summary>
+            <param name="msg">msg</param>
+            <param name="data">data</param>
+            <returns></returns>
+        </member>
+        <member name="M:Adam.WebApi.Response.ResponseModel`1.Build``1(System.Int32,System.String,``0)">
+            <summary>
+            return msg
+            </summary>
+            <param name="code"></param>
+            <param name="msg">msg</param>
+            <param name="data">data</param>
+            <returns></returns>
+        </member>
+        <member name="T:Adam.WebApi.Response.ResponseModelBuilder">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Adam.WebApi.Response.ResponseModelBuilder.Success``1(``0,System.String)">
+            <summary>
+            return success
+            </summary>
+            <param name="msg">msg</param>
+            <param name="data">data</param>
+            <returns></returns>
+        </member>
+        <member name="M:Adam.WebApi.Response.ResponseModelBuilder.Fail``1(System.String,``0)">
+            <summary>
+            return fail
+            </summary>
+            <param name="msg">msg</param>
+            <param name="data">data</param>
+            <returns></returns>
+        </member>
+        <member name="M:Adam.WebApi.Response.ResponseModelBuilder.Build``1(System.Int32,System.String,``0)">
+            <summary>
+            return msg
+            </summary>
+            <param name="code"></param>
+            <param name="msg">msg</param>
+            <param name="data">data</param>
+            <returns></returns>
+        </member>
+        <member name="M:Adam.WebApi.Response.ResponseModelBuilder.SuccessAsync``1(``0,System.String)">
+            <summary>
+            return success
+            </summary>
+            <param name="msg">msg</param>
+            <param name="data">data</param>
+            <returns></returns>
+        </member>
+        <member name="M:Adam.WebApi.Response.ResponseModelBuilder.FailAsync``1(System.String,``0)">
+            <summary>
+            return fail
+            </summary>
+            <param name="msg">msg</param>
+            <param name="data">data</param>
+            <returns></returns>
+        </member>
+        <member name="M:Adam.WebApi.Response.ResponseModelBuilder.BuildAsync``1(System.Int32,System.String,``0)">
+            <summary>
+            return msg
+            </summary>
+            <param name="code"></param>
+            <param name="msg">msg</param>
+            <param name="data">data</param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

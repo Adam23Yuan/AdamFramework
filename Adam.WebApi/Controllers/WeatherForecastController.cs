@@ -1,4 +1,5 @@
-﻿using Adam.WebApi.Options;
+﻿using Adam.WebApi.Extensions;
+using Adam.WebApi.Options;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
@@ -6,6 +7,7 @@ namespace Adam.WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]/")]
+    [TypeFilter(typeof(ResultDemoFilterAttribute))]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
