@@ -1,10 +1,12 @@
 ﻿using System.Reflection;
 using Adam.IServices;
 using Adam.Services;
+using Adam.WebApi.Context;
 using Adam.WebApi.Extensions;
 using Adam.WebApi.Options;
 using Adam.WebApi.Utility;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 
@@ -20,6 +22,8 @@ builder.Configuration.AddEnvironmentVariables("Common");
 
 // Add services to the container. 
 builder.Services.AddControllers(o => o.Filters.Add<ResultDemoFilterAttribute>());
+// add efcore Dbcontext
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
 builder.Services.AddDataProtection();
 // appsetting.json
