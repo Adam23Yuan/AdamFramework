@@ -1,9 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using System.Runtime.InteropServices;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Adam.ConsoleApp;
-using Adam.Dto;
 
 Console.WriteLine("Hello, World!");
 
@@ -31,7 +27,22 @@ Console.WriteLine("Hello, World!");
 
 #region record(record class,record struct,readonly record struct)
 {
-    recordTest.Test1();
+    //recordTest.Test1();
+}
+#endregion
+
+#region Nullable<T>
+{
+    double? currentvalue = null;
+    if (!currentvalue.HasValue)
+    {
+        Console.WriteLine($"currentvalue is null");
+        currentvalue = 0.2384;
+    }
+    if (currentvalue.HasValue)
+    {
+        Console.WriteLine($"currentvalue is {currentvalue.Value}");
+    }
 }
 #endregion
 
