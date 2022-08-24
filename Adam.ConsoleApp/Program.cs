@@ -34,11 +34,13 @@ Console.WriteLine("Hello, World!");
 #region Nullable<T>
 {
     double? currentvalue = null;
+    double result = currentvalue ?? 0;
     if (!currentvalue.HasValue)
     {
         Console.WriteLine($"currentvalue is null");
         currentvalue = 0.2384;
     }
+    result = currentvalue ?? 0;
     if (currentvalue.HasValue)
     {
         Console.WriteLine($"currentvalue is {currentvalue.Value}");
