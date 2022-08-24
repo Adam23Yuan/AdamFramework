@@ -70,6 +70,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.Models", "Adam.Models\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.ModelConfigurations", "Adam.ModelConfigurations\Adam.ModelConfigurations.csproj", "{1B09A5FA-2A8C-48CF-BD37-23ABB910EC4C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{52AB3C03-909B-4D28-9BE4-7FD25C6AA18F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{327F97DC-4B23-4038-B431-A95AFE9E1A61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -140,6 +144,10 @@ Global
 		{1B09A5FA-2A8C-48CF-BD37-23ABB910EC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B09A5FA-2A8C-48CF-BD37-23ABB910EC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B09A5FA-2A8C-48CF-BD37-23ABB910EC4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327F97DC-4B23-4038-B431-A95AFE9E1A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327F97DC-4B23-4038-B431-A95AFE9E1A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327F97DC-4B23-4038-B431-A95AFE9E1A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327F97DC-4B23-4038-B431-A95AFE9E1A61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -161,6 +169,7 @@ Global
 		{9FA3FAA1-EC2A-44E3-A3E6-A619A16C556E} = {0C901190-95C5-4BB3-8326-DA229AEEA348}
 		{F7409D59-A94A-4FCB-A6D2-B0B2D208F731} = {0C901190-95C5-4BB3-8326-DA229AEEA348}
 		{1B09A5FA-2A8C-48CF-BD37-23ABB910EC4C} = {0C901190-95C5-4BB3-8326-DA229AEEA348}
+		{327F97DC-4B23-4038-B431-A95AFE9E1A61} = {52AB3C03-909B-4D28-9BE4-7FD25C6AA18F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D0E4424B-5DB6-4078-9E96-00A062B38241}
