@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+    <script type="application/json">
+    </script>
+</head>
+<body>
+    <div>
+        <h3>数据源</h3>
+        <div>
+            <h3>QuerySetID:</h3>
+            <input id="QuerySetId" name="QuerySetId" type="text" value='396003' />
+            <h3>IsRemoveAndUploadMode:</h3>
+            <input id="IsRemoveAndUploadMode" name="IsRemoveAndUploadMode" type="text" value='false' />
+            <h3>Authorization:</h3>
+            <input id="Authorization" name="Authorization" value='eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjJaUXBKM1VwYmpBWVhZR2FYRUpsOGxWMFRPSSJ9.eyJhdWQiOiIwMmJiMzViMC00NzM3LTRjOWItYmE2OS0xMDgzZTc2NTRmZjEiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3YyLjAiLCJpYXQiOjE2NjE0MTgxNDksIm5iZiI6MTY2MTQxODE0OSwiZXhwIjoxNjYxNDIyMDU2LCJhaW8iOiJBV1FBbS84VEFBQUFZblRyZS9YeUJlVnljM3VJTHdYUzBXNVEwSThTWlpsOEcxNWUwVDBlTDdHak82dlBLTHpuZHo4RGZUZDhCNzdJaEVSMmFwZXR4amRUVlRZd29UV1huK2RMNlM2SWZlSG1OREdwWVJHZWM1dVZNWjl0cmxHMHpDVzBVeDF0YlZ3MCIsImF6cCI6IjAyYmIzNWIwLTQ3MzctNGM5Yi1iYTY5LTEwODNlNzY1NGZmMSIsImF6cGFjciI6IjAiLCJuYW1lIjoiU2kgWW9uZyBZdWFuIChDU0kgSW50ZXJmdXNpb24gSW5jKSIsIm9pZCI6IjM5MWMzYTAzLTNmN2QtNGZkNy1iODI5LWRmZmIxMmMyOWVkMyIsInByZWZlcnJlZF91c2VybmFtZSI6InYtc2l5b25neXVhbkBtaWNyb3NvZnQuY29tIiwicmgiOiIwLkFSb0F2NGo1Y3ZHR3IwR1JxeTE4MEJIYlI3QTF1d0kzUjV0TXVta1FnLWRsVF9FYUFEOC4iLCJyb2xlcyI6WyJVc2VyLkFjY2VzcyJdLCJzY3AiOiJhY2Nlc3NfYXNfdXNlciIsInN1YiI6InhteGRGQmxjSUFTdjI2NmhSRjM3d2ZScnFQbGl1c2pBMXEycGJQUjRIOEkiLCJ0aWQiOiI3MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDciLCJ1dGkiOiI5b0dNSWY0RTNVZXhlTm5OZFpNY0FBIiwidmVyIjoiMi4wIn0.seXIEvrjABlTQr4qKOvYQ9KXOWBDjJi3V-5SWni4mmxcL0wmQJQEsvDiDqLW-d5ADxbYW9veYeqb7hkcYT-iTwWkPmpaPJ0mWS4w3Q5kRaOPwZzS_48CrLxIGsKBUNhVh7elVwkqTBvfQgwYx1i9sB3hsGAFhg9fgG4waE179ZLYO3P5RSlD3-jUszEJ7xr_9w4tErIubk6znEdV6pZBXVeJMai6Pbt1XplzOjNxxhmxNjq7bkDQtbwWFwSg8ZZixOhhzDbd-mJnfTzUOsbOxjjV_CMvy5CrM1xwST6HqNCUMboFEQ-6_N6C74tu3yqLZUx0DJkhe7WUn3o6yIZEIg' />
+            <h5>结果展示:</h5>
+            <div id="result"></div>
+        </div>
+        <h3>原生JS提交</h3>
+        <form name="frm" id="frm" method="post">
+            <!-- 隐藏的file控件值改变时同步更新到text上 -->
+            <input name="formFiles" id="formFiles" type="file" multiple />
+        </form>
+        <div>
+            <h5>表单外JS upload and download</h5>
+            <input type="button" name="name" value="uploadFileAndData" onclick="uploadFile();" /> &nbsp;
+            <input type="button" name="name" value="downloadFile" onclick="downloadFile();" />
+        </div>
+        <script type="text/javascript">
+
+            const hostApiUrl = `https://localhost:7159/api/QuerySetDetails/`;
+            function getRequestPara() {
+                let requestObject = { IsRemoveAndUploadMode: false, QuerySetId: -1, Authorization: '' };
+                let isRemoveAndUploadModeValue = document.getElementById("IsRemoveAndUploadMode").value;
+                requestObject.IsRemoveAndUploadMode = isRemoveAndUploadModeValue == 'true' ? true : false;
+                requestObject.QuerySetId = parseInt(document.getElementById("QuerySetId").value);
+                requestObject.Authorization = document.getElementById("Authorization").value;
+                console.warn('requestObject', requestObject)
+                return requestObject;
+            }
+
+            function buildRequestJson() {
+                const requestObject = getRequestPara();
+                let requestJson = JSON.stringify(requestObject);
+                console.warn('requestJson', { requestObject: requestObject, requestJson: requestJson })
+                document.getElementById("requestFormJson_2").setAttribute('value', requestJson)
+                return
+            }
+            function uploadFile() {
+                const requestObject = getRequestPara();
+                const formElement = document.getElementById("frm");
+                const fd = new FormData(formElement);
+                // js向FormData 添加自定义键值对
+                fd.append("requestFormJson", JSON.stringify(requestObject))
+                console.warn('form', { formElement: formElement, fd: fd })
+                const oOutput = document.getElementById("result");
+                const oReq = new XMLHttpRequest();
+                oReq.open("POST", `${hostApiUrl}UploadSecondaryData`, true);
+                oReq.setRequestHeader('Authorization', 'Bearer ' + requestObject.Authorization);
+                oReq.onload = function (oEvent) {
+                    if (oReq.status === 200) {
+                        oOutput.innerHTML = `Uploaded ${new Date()}<br \/>${JSON.stringify(oEvent)}`;
+                    } else {
+                        oOutput.innerHTML = `Error ${oReq.status} occurred when trying to upload your file.<br \/>${JSON.stringify(oEvent)}`;
+                    }
+                };
+                oReq.send(fd);
+            }
+            function downloadFile() {
+                const requestObject = getRequestPara();
+                const oOutput = document.getElementById("result");
+                const oReq = new XMLHttpRequest();
+                const getUrl = `${hostApiUrl}DownloadQuerySet?querySetId=${requestObject.QuerySetId}&includeAnnotations=true`;
+                console.warn('form', { getUrl: getUrl })
+                oReq.open("GET", getUrl, true);
+                oReq.setRequestHeader('Authorization', 'Bearer ' + requestObject.Authorization);
+                oReq.onload = function (oEvent) {
+                    if (oReq.status === 200) {
+                        oOutput.innerHTML = `download ${new Date()}<br \/>${JSON.stringify(oEvent)}`;
+                    } else {
+                        oOutput.innerHTML = `Error ${oReq.status} occurred when trying to download your file.<br \/>${JSON.stringify(oEvent)}`;
+                    }
+                    console.warn(hostApiUrl, oEvent);
+                };
+
+                oReq.send();
+            }
+
+        </script>
+    </div>
+    <hr />
+    <div>
+        <h3>表单提交</h3>
+        <form name="Upload" id="Upload" enctype="multipart/form-data" method="post" action="https://localhost:7159/api/QuerySetDetails/UploadSecondaryData">
+            <div>
+                <div>
+                    <input id="adam" name="formFiles" type="file" multiple />
+                </div>
+                <div>
+                    <input id="requestFormJson_2" name="requestFormJson" type="text" value='' />
+                </div>
+                <div>
+                    <h5>表单内button提交</h5>
+                </div>
+                <div>
+                    <input id="Button1" type="submit" value="uploadFileAndData" onclick="buildRequestJson()" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <hr />
+    <div>
+        <ul>
+            前端调用上传文件接口注意事项
+            <li>1、ajax上传文件时，ajax参数以FormData形式提交至接口</li>
+            <li>2、表单内上传文件时，表单要添加属性=>enctype="multipart/form-data"</li>
+            <li>3、前端需要统一给上传图片控件设置name属性，如果不设置的话，接口获取不到上传的文件。</li>
+            <li>4、当表单需要提交除文件外的对象参数时，需要将对象进行序列化json后传递，接口拿到参数后，需要反序列化。</li>
+            <li>5、接口获取</li>
+        </ul>
+        <ul>
+            接口获取上传文件注意事件
+            <li>1、接口获取文件参数的参数名，需要和前端文件控件的name属性一致，否则获取不到上传的文件。示例如下 </li>
+            <li>上传文件控件html：＜input name="formFiles" id="formFiles" type="file" multiple /＞</li>
+            <li>接口定义：public IActionResult Upload(List<IFormFile> formFiles, [FromForm] string subDirectory)</li>
+            <li>2、当获取文件参数的参数名与前端文件控件的name不一致时，可使用 Request.Form.Files 获取上传的文件</li>
+            <li>如IFormFileCollection fileCollection = Request.Form.Files;</li>
+            <li>3、获取其它参数，请先通过 key是否在 Request.Form.Keys中，再通过 Request.Form索引获取上传的参数。根据需要进行反序列化。 </li>
+        </ul>
+    </div>
+</body>
+</html>
