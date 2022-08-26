@@ -18,6 +18,7 @@ namespace Adam.Models
         /// <para>映射数据库列名</para>
         /// <para>1.也可以在  OnModelCreating 方法中 通过属性指定 HasColumnName</para>
         /// </summary>
+        [Key]
         [Column("blog_id")]
         public int BlogId { get; set; }
 
@@ -25,6 +26,9 @@ namespace Adam.Models
         /// 
         /// </summary>
         [Required]
+        [MaxLength(500)]
+        [Comment("the url of the blog")]
+        [Column(Order = 2)]
         public string Url { get; set; }
 
         /// <summary>
@@ -33,6 +37,17 @@ namespace Adam.Models
         /// </summary>
         [Column(TypeName = "decimal(5, 2)")]
         public decimal Rating { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Precision(14, 2)]
+        public decimal Score { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime Created { get; set; }
 
         /// <summary>
         /// 排除属性

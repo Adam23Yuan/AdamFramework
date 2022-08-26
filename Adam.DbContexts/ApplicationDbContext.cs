@@ -85,6 +85,8 @@ namespace Adam.WebApi.Context
                     bb.Property<string>("Url");
                     bb.Property<DateTime>("LastUpdated");
                 });
+                // 7、主键配置
+                modelBuilder.Entity<Blog>().HasKey(o => o.BlogId);
             }
             #endregion
 
@@ -100,8 +102,17 @@ namespace Adam.WebApi.Context
                 modelBuilder.Entity<Blog>().Property(o => o.Rating).HasColumnType("decimal(5, 2)");
                 modelBuilder.Entity<Blog>(eb =>
                 {
+                    // 列类型
                     eb.Property(o => o.Rating).HasColumnType("decimal(5, 2)");
+                    // 最大长度，注释，列排序 
+                    eb.Property(o => o.Url).HasMaxLength(500).HasComment("the url of the blog").HasColumnOrder(2);
+                    // 列数值精度
+                    eb.Property(o => o.Score).HasPrecision(14, 2);
+                    // 默认值 
+                    eb.Property(o => o.Rating).HasDefaultValue(1);
+                    eb.Property(o => o.Created).HasDefaultValueSql("getdate()");
                 });
+
 
             }
             #endregion

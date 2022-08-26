@@ -10,7 +10,13 @@ namespace Adam.ModelConfigurations
         {
             builder
             .Property(b => b.Url)
-            .IsRequired();
+            .IsRequired()
+            .HasMaxLength(500)
+            .HasComment("the url of the blog")
+            .HasColumnOrder(2);
+            builder
+            .Property(b => b.Score)
+            .HasPrecision(14, 2);
         }
     }
 }
