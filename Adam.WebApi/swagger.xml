@@ -4,6 +4,25 @@
         <name>Adam.WebApi</name>
     </assembly>
     <members>
+        <member name="T:Adam.WebApi.Controllers.ContextController">
+            <summary>
+            V1版本API
+            </summary>
+        </member>
+        <member name="M:Adam.WebApi.Controllers.ContextController.Get">
+            <summary>
+            获取数据 我来改点内容 试试 git add . 命令
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Adam.WebApi.Controllers.ContextController.Get2(System.Int32)">
+            <summary>
+            获取数据
+            <para> 参数 <paramref name="typeID"/> 数据类型为int </para>
+            </summary>
+            <param name="typeID">类型ID</param>
+            <returns>返回天气集合</returns>
+        </member>
         <member name="T:Adam.WebApi.Controllers.devV1Controller">
             <summary>
             V1版本API
