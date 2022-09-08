@@ -24,7 +24,7 @@
         /// <param name="msg">msg</param>
         /// <param name="data">data</param>
         /// <returns></returns>
-        public static ResponseModel<T> Fail<T>(string msg = "Error", T data = default)
+        public static ResponseModel<T> Fail<T>(string msg = "Error", T? data = default)
         {
             return Build(500, msg, data);
         }
@@ -36,7 +36,7 @@
         /// <param name="msg">msg</param>
         /// <param name="data">data</param>
         /// <returns></returns>
-        public static ResponseModel<T> Build<T>(int code, string msg, T data)
+        public static ResponseModel<T> Build<T>(int code, string msg, T? data)
         {
             return new ResponseModel<T>() { Code = code, Message = msg, Data = data };
         }
@@ -62,7 +62,7 @@
         /// <param name="msg">msg</param>
         /// <param name="data">data</param>
         /// <returns></returns>
-        public static async Task<ResponseModel<T>> FailAsync<T>(string msg = "Error", T data = default)
+        public static async Task<ResponseModel<T>> FailAsync<T>(string msg = "Error", T? data = default)
         {
             return await BuildAsync(500, msg, data);
         }
@@ -74,7 +74,7 @@
         /// <param name="msg">msg</param>
         /// <param name="data">data</param>
         /// <returns></returns>
-        public static async Task<ResponseModel<T>> BuildAsync<T>(int code, string msg, T data)
+        public static async Task<ResponseModel<T>> BuildAsync<T>(int code, string msg, T? data)
         {
             await Task.Delay(0);
             var responseModel = new ResponseModel<T>

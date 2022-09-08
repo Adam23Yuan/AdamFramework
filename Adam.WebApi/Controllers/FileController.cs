@@ -265,7 +265,7 @@ namespace Adam.WebApi.Controllers
             using (var stream = streamFactory())
             using (var reader = new StreamReader(stream))
             {
-                string line;
+                string? line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     yield return line;
