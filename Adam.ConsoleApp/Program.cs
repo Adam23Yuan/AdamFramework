@@ -51,9 +51,46 @@ Console.WriteLine("Hello, World!");
 }
 #endregion
 
+#region interview
+{
+    Console.WriteLine($"datetime:{GetPhraseSame("aaaac", "caaaa")}");
+}
+#endregion
+
 Console.ReadKey();
 
+static bool GetPhraseSame(string s, string t)
+{
+    bool b = true, bb = true, bbb = true;
 
+    if (s.Length.Equals(t.Length))
+    {
+        char[] alphabets1 = s.ToCharArray();
+        char[] alphabets2 = t.ToCharArray();
+        //char[] alphabets1Var = new char[] { };
+        //char[] alphabets2Var = new char[] { };
+
+        for (int i = 0; i < alphabets1.Length; i++)
+        {
+            if (!alphabets2.Contains(alphabets1[i]))
+            {
+                b = false;
+            }
+        }
+
+        for (int j = 0; j < alphabets2.Length; j++)
+        {
+            if (!alphabets1.Contains(alphabets2[j]))
+            {
+                bb = false;
+            }
+        }
+
+        bbb = b && bb;
+    }
+
+    return bbb;
+}
 public class recordTest
 {
     public static void Test1()
