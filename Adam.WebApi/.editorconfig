@@ -1,5 +1,5 @@
 # Remove the line below if you want to inherit .editorconfig settings from higher directories
-root = true
+# root = true
 
 # C# files
 [*.cs]
@@ -408,7 +408,6 @@ dotnet_diagnostic.CS8847.severity = error
 # SA1101: Prefix local calls with this
 dotnet_diagnostic.SA1101.severity = none
 dotnet_diagnostic.IDE0009.severity = error
-csharp_style_prefer_top_level_statements = true:silent
 
 [*.{cs,vb}]
 dotnet_style_operator_placement_when_wrapping = beginning_of_line

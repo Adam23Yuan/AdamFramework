@@ -78,7 +78,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppAAD", "WebAppAAD\WebA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StyleCop", "StyleCop", "{D7CE97F2-4377-49D6-9474-A02396E9BE88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleCopClassLibrary", "StyleCopClassLibrary\StyleCopClassLibrary.csproj", "{2BCB1970-421C-463D-A426-C6AEC6B1EB6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StyleCopClassLibrary", "StyleCopClassLibrary\StyleCopClassLibrary.csproj", "{2BCB1970-421C-463D-A426-C6AEC6B1EB6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
