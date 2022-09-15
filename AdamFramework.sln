@@ -40,9 +40,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.Dto", "Adam.Dto\Adam.Dto.csproj", "{B4814D6C-E348-477B-8E92-523E8ECBAAB9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{66A9E45A-7CCE-4C87-A154-19925C67906A}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{DAD61EBB-69B3-4795-B562-6CAE03A520EF}"
 EndProject
