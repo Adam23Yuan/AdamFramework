@@ -12,7 +12,7 @@ namespace Adam.Models
     /// </summary>
     [Table("Blogs", Schema = "dbo")]
     [Comment("Blogs managed on the website")]
-    [Index(nameof(Url),IsUnique =true,Name = "Index_Url")]
+    [Index(nameof(Url), IsUnique = true, Name = "Index_Url")]
     public class Blog
     {
         /// <summary>
@@ -79,5 +79,14 @@ namespace Adam.Models
         /// 
         /// </summary>
         public List<Post> Posts { get; set; }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum abc
+    {
+        a = 0,
+        b = 1,
     }
 }
