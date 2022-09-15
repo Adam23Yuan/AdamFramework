@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Adam.ConsoleApp
 {
-
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="name"></param>
     public record class Course(string name);
 
     public record class Person(string name, int age);
