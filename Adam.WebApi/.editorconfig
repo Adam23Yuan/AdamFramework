@@ -84,3 +84,7 @@ dotnet_style_prefer_simplified_boolean_expressions = true:suggestion
 
 # SA1028: Code should not contain trailing whitespace
 dotnet_diagnostic.SA1028.severity = warning
+
+
+# Enumeration items should be documented 
+dotnet_diagnostic.SA1602.severity = error
