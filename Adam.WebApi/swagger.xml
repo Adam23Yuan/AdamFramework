@@ -37,10 +37,33 @@
         <member name="M:Adam.WebApi.Controllers.devV1Controller.Get2(System.Int32)">
             <summary>
             获取数据
-            <para> 参数 <paramref name="typeID"/> 数据类型为int </para>
+            <para> 参数 <paramref name="typeID" /> 数据类型为int. </para>
+            <para> code: <code> 
+            Console.WriteLine("");
+            return IEnumerable 
+            </code>. </para>
+            <para> <example> demo code;</example> </para>
+            <para>see <see cref="T:System.Type" /> | seealso <seealso cref="T:Microsoft.AspNetCore.Hosting.ApplicationLifetime" /> .</para>
+            <seealso cref="T:System.TypeAccessException" />
             </summary>
             <param name="typeID">类型ID</param>
-            <returns>返回天气集合</returns>
+            <exception cref="T:System.AggregateException"> para is null.</exception>
+            <exception cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"> NotFoundObjectResult is null.</exception>
+            <!-- Failed to insert some or all of included XML --><include file="www.baidu.com" path="asdf" />
+            <returns>return <c>IEnumerable</c>. </returns>
+        </member>
+        <member name="M:Adam.WebApi.Controllers.devV1Controller.Main">
+            <summary>
+            Here is an example of a bulleted list:
+            <list type="bullet">
+            <item>a
+            <description>Item 1.</description>
+            </item>
+            <item>b
+            <description>Item 2.</description>
+            </item>
+            </list>
+            </summary>
         </member>
         <member name="M:Adam.WebApi.Controllers.devV2Controller.Get">
             <summary>

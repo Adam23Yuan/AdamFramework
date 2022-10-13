@@ -23,7 +23,7 @@ builder.Configuration.AddEnvironmentVariables("Common");
 // Add services to the container. 
 builder.Services.AddControllers(o => o.Filters.Add<ResultDemoFilterAttribute>());
 // add efcore Dbcontext
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext")));
+//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDbContext")));
 
 builder.Services.AddDataProtection();
 // appsetting.json
@@ -114,6 +114,8 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 var app = builder.Build();
+
+IConfiguration configuration = app.Configuration;
 // 输出配置项
 var collections = builder.Configuration.AsEnumerable();
 foreach (var item in collections)
