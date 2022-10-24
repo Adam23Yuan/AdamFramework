@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Models.Home;
+using WebApp.Utility;
 
 namespace WebApp.Controllers
 {
@@ -18,9 +20,18 @@ namespace WebApp.Controllers
         }
 
         // GET: HomeController/Create
-        public ActionResult Create()
+        public ActionResult Create(StudentModel studentModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                return this.Content($"age={studentModel.Age}");
+            }
+            else 
+            {
+                return this.Content($"validate if failed.{MVCHelper.GetValidMessage(ModelState)}");
+            }
+
+            //return View();
         }
 
         // POST: HomeController/Create
