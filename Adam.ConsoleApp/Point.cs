@@ -1,4 +1,4 @@
-﻿// <copyright file="documentationcomments.cs" company="Microsoft">
+﻿// <copyright file="Point.cs" company="Microsoft">
 // Copyright (c) Microsoft. All rights reserved.
 // </copyright>
 

@@ -18,7 +18,8 @@ namespace Adam.ConsoleApp
 
     public record class Person(string name, int age);
 
-    public record class Student(string name, int age, string className, Course course): Person(name, age)
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.SpacingRules", "SA1009:Closing parenthesis should be spaced correctly", Justification = "<Pending>")]
+    public record class Student(string name, int age, string className, Course course) : Person(name, age)
     {
 
     }
@@ -48,14 +49,14 @@ namespace Adam.ConsoleApp
 
             builder.Append("name");
             builder.Append(" : ");
-            builder.Append(Name);
+            builder.Append(this.Name);
             builder.Append("name");
             builder.Append(" : ");
-            builder.Append(Name);
+            builder.Append(this.Name);
             builder.Append(", ");
             builder.Append("Age");
             builder.Append(" : ");
-            builder.Append(Age.ToString());
+            builder.Append(this.Age.ToString());
             return true;
         }
     }
