@@ -238,7 +238,27 @@
         </member>
         <member name="T:Adam.WebApi.Utility.enumFile">
             <summary>
-            
+            enumFile.
+            </summary>
+        </member>
+        <member name="F:Adam.WebApi.Utility.enumFile.None">
+            <summary>
+            None.
+            </summary>
+        </member>
+        <member name="F:Adam.WebApi.Utility.enumFile.Open">
+            <summary>
+            Open.
+            </summary>
+        </member>
+        <member name="F:Adam.WebApi.Utility.enumFile.Read">
+            <summary>
+            Read.
+            </summary>
+        </member>
+        <member name="F:Adam.WebApi.Utility.enumFile.Write">
+            <summary>
+            Write.
             </summary>
         </member>
     </members>

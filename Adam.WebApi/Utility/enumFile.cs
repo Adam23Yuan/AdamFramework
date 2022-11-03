@@ -5,13 +5,28 @@
 namespace Adam.WebApi.Utility
 {
     /// <summary>
-    /// 
+    /// enumFile.
     /// </summary>
     public enum enumFile
     {
+        /// <summary>
+        /// None.
+        /// </summary>
         None,
+
+        /// <summary>
+        /// Open.
+        /// </summary>
         Open,
+
+        /// <summary>
+        /// Read.
+        /// </summary>
         Read,
-        Write
+
+        /// <summary>
+        /// Write.
+        /// </summary>
+        Write,
     }
 }
