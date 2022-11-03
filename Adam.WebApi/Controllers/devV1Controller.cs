@@ -42,10 +42,20 @@ namespace Adam.WebApi.Controllers
 
         /// <summary>
         /// 获取数据
-        /// <para> 参数 <paramref name="typeID"/> 数据类型为int </para>
+        /// <para> 参数 <paramref name="typeID"/> 数据类型为int. </para>
+        /// <para> code: <code> 
+        /// Console.WriteLine("");
+        /// return IEnumerable 
+        /// </code>. </para>
+        /// <para> <example> demo code;</example> </para>
+        /// <para>see <see cref="Type"/> | seealso <seealso cref="ApplicationLifetime"/> .</para>
+        /// <seealso cref="TypeAccessException"/>
         /// </summary>
         /// <param name="typeID">类型ID</param>
-        /// <returns>返回天气集合</returns>
+        /// <exception cref="AggregateException"> para is null.</exception>
+        /// <exception cref="NotFoundObjectResult"> NotFoundObjectResult is null.</exception>
+        /// <include file='www.baidu.com' path='asdf'/>
+        /// <returns>return <c>IEnumerable</c>. </returns>
         [HttpGet]
         [Route("GetRoute2")]
         public IEnumerable<WeatherForecast> Get2(int typeID)
@@ -57,6 +67,22 @@ namespace Adam.WebApi.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)] + $"|typeID=[{typeID}]"
             })
             .ToArray();
+        }
+
+        /// <summary>
+        /// Here is an example of a bulleted list:
+        /// <list type="bullet">
+        /// <item>a
+        /// <description>Item 1.</description>
+        /// </item>
+        /// <item>b
+        /// <description>Item 2.</description>
+        /// </item>
+        /// </list>
+        /// </summary>
+        public static void Main()
+        {
+            // ...
         }
     }
 }

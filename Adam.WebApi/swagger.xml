@@ -37,10 +37,33 @@
         <member name="M:Adam.WebApi.Controllers.devV1Controller.Get2(System.Int32)">
             <summary>
             获取数据
-            <para> 参数 <paramref name="typeID"/> 数据类型为int </para>
+            <para> 参数 <paramref name="typeID" /> 数据类型为int. </para>
+            <para> code: <code> 
+            Console.WriteLine("");
+            return IEnumerable 
+            </code>. </para>
+            <para> <example> demo code;</example> </para>
+            <para>see <see cref="T:System.Type" /> | seealso <seealso cref="T:Microsoft.AspNetCore.Hosting.ApplicationLifetime" /> .</para>
+            <seealso cref="T:System.TypeAccessException" />
             </summary>
             <param name="typeID">类型ID</param>
-            <returns>返回天气集合</returns>
+            <exception cref="T:System.AggregateException"> para is null.</exception>
+            <exception cref="T:Microsoft.AspNetCore.Mvc.NotFoundObjectResult"> NotFoundObjectResult is null.</exception>
+            <!-- Failed to insert some or all of included XML --><include file="www.baidu.com" path="asdf" />
+            <returns>return <c>IEnumerable</c>. </returns>
+        </member>
+        <member name="M:Adam.WebApi.Controllers.devV1Controller.Main">
+            <summary>
+            Here is an example of a bulleted list:
+            <list type="bullet">
+            <item>a
+            <description>Item 1.</description>
+            </item>
+            <item>b
+            <description>Item 2.</description>
+            </item>
+            </list>
+            </summary>
         </member>
         <member name="M:Adam.WebApi.Controllers.devV2Controller.Get">
             <summary>
@@ -116,11 +139,6 @@
             
             </summary>
         </member>
-        <member name="M:Adam.WebApi.Response.ResponseModel`1.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="P:Adam.WebApi.Response.ResponseModel`1.Code">
             <summary>
             code 
@@ -138,7 +156,7 @@
             data
             </summary>
         </member>
-        <member name="M:Adam.WebApi.Response.ResponseModel`1.Success``1(``0,System.String)">
+        <member name="M:Adam.WebApi.Response.ResponseModel`1.Success(`0,System.String)">
             <summary>
             return success
             </summary>
@@ -146,7 +164,7 @@
             <param name="data">data</param>
             <returns></returns>
         </member>
-        <member name="M:Adam.WebApi.Response.ResponseModel`1.Fail``1(System.String,``0)">
+        <member name="M:Adam.WebApi.Response.ResponseModel`1.Fail(System.String,`0)">
             <summary>
             return fail
             </summary>
@@ -154,7 +172,7 @@
             <param name="data">data</param>
             <returns></returns>
         </member>
-        <member name="M:Adam.WebApi.Response.ResponseModel`1.Build``1(System.Int32,System.String,``0)">
+        <member name="M:Adam.WebApi.Response.ResponseModel`1.Build(System.Int32,System.String,`0)">
             <summary>
             return msg
             </summary>
@@ -217,6 +235,11 @@
             <param name="msg">msg</param>
             <param name="data">data</param>
             <returns></returns>
+        </member>
+        <member name="T:Adam.WebApi.Utility.enumFile">
+            <summary>
+            
+            </summary>
         </member>
     </members>
 </doc>

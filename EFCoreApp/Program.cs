@@ -7,4 +7,4 @@ Console.WriteLine($"build git diff patch commit file second");
 // git diff patch commit third
 Console.WriteLine($"build git diff patch commit file third");
 // git diff path uncommit
-string inputContent = Console.ReadLine();
+string? inputContent = Console.ReadLine();

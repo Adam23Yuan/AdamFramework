@@ -86,7 +86,7 @@ namespace Adam.WebApi.Controllers
         //    }
         //    catch (Exception ex)
         //    {
-        //        return BadRequest(ex.Message);  
+        //        return BadRequest(ex.Message);
         //    }
         //}
 
@@ -265,7 +265,7 @@ namespace Adam.WebApi.Controllers
             using (var stream = streamFactory())
             using (var reader = new StreamReader(stream))
             {
-                string line;
+                string? line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     yield return line;

@@ -10,13 +10,6 @@ namespace Adam.WebApi.Response
     {
         #region ctor
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public ResponseModel()
-        {
-        }
-
         #endregion
 
         #region property
@@ -39,7 +32,7 @@ namespace Adam.WebApi.Response
         /// data
         /// </summary>
         [JsonPropertyName("data")]
-        public T Data { get; set; }
+        public T? Data { get; set; }
 
         #endregion
 
@@ -51,7 +44,7 @@ namespace Adam.WebApi.Response
         /// <param name="msg">msg</param>
         /// <param name="data">data</param>
         /// <returns></returns>
-        public static ResponseModel<T> Success<T>(T data, string msg = "OK")
+        public static ResponseModel<T> Success(T data, string msg = "OK")
         {
             return Build(200, msg, data);
         }
@@ -62,7 +55,7 @@ namespace Adam.WebApi.Response
         /// <param name="msg">msg</param>
         /// <param name="data">data</param>
         /// <returns></returns>
-        public static ResponseModel<T> Fail<T>(string msg = "Error", T data = default)
+        public static ResponseModel<T> Fail(string msg = "Error", T? data = default)
         {
             return Build(500, msg, data);
         }
@@ -74,7 +67,7 @@ namespace Adam.WebApi.Response
         /// <param name="msg">msg</param>
         /// <param name="data">data</param>
         /// <returns></returns>
-        public static ResponseModel<T> Build<T>(int code, string msg, T data)
+        public static ResponseModel<T> Build(int code, string msg, T? data)
         {
             return new ResponseModel<T>() { Code = code, Message = msg, Data = data };
         }
