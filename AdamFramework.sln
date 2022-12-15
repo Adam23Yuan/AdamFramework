@@ -7,28 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.WebApi", "Adam.WebApi\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.ConsoleApp", "Adam.ConsoleApp\Adam.ConsoleApp.csproj", "{C2E8868A-651F-4D5B-8AA0-F082B94186C6}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Adam.WebSite", "Adam.WebSite\", "{6CA08DE1-7458-4D78-96AF-DB9B5D172F06}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_52027"
-		Debug.AspNetCompiler.PhysicalPath = "Adam.WebSite\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52027\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_52027"
-		Release.AspNetCompiler.PhysicalPath = "Adam.WebSite\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52027\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "52027"
-		SlnRelativePath = "Adam.WebSite\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.Core", "Adam.Core\Adam.Core.csproj", "{ACE77353-7A04-4724-992F-872044A91197}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adam.Data", "Adam.Data\Adam.Data.csproj", "{635A015A-53C6-4F7B-9E0B-9518B756A78C}"
@@ -92,10 +70,6 @@ Global
 		{C2E8868A-651F-4D5B-8AA0-F082B94186C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2E8868A-651F-4D5B-8AA0-F082B94186C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E8868A-651F-4D5B-8AA0-F082B94186C6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6CA08DE1-7458-4D78-96AF-DB9B5D172F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CA08DE1-7458-4D78-96AF-DB9B5D172F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6CA08DE1-7458-4D78-96AF-DB9B5D172F06}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CA08DE1-7458-4D78-96AF-DB9B5D172F06}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{ACE77353-7A04-4724-992F-872044A91197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ACE77353-7A04-4724-992F-872044A91197}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ACE77353-7A04-4724-992F-872044A91197}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -163,7 +137,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{8C5B51FE-5E37-410F-ABDA-1A552C61AB01} = {DAD61EBB-69B3-4795-B562-6CAE03A520EF}
 		{C2E8868A-651F-4D5B-8AA0-F082B94186C6} = {DAD61EBB-69B3-4795-B562-6CAE03A520EF}
-		{6CA08DE1-7458-4D78-96AF-DB9B5D172F06} = {DAD61EBB-69B3-4795-B562-6CAE03A520EF}
 		{ACE77353-7A04-4724-992F-872044A91197} = {0C901190-95C5-4BB3-8326-DA229AEEA348}
 		{635A015A-53C6-4F7B-9E0B-9518B756A78C} = {0C901190-95C5-4BB3-8326-DA229AEEA348}
 		{6568BE04-F737-4290-9213-8B3AE1346428} = {8A832965-B645-4BCD-BD1D-47DB2E9B33DC}
